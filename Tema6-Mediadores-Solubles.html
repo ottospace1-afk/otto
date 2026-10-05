@@ -1,0 +1,808 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tema 6 · Mediadores Solubles</title>
+<meta name="description" content="Apuntes de Inmunología — Tema 6: Mediadores solubles de la respuesta inmune (citoquinas y sistema del complemento). Combina los apuntes con la presentación de clase.">
+<style>
+:root{
+  --bg:#f6f5f1;
+  --surface:#ffffff;
+  --surface-2:#faf9f6;
+  --ink:#1f2328;
+  --ink-soft:#4a5159;
+  --muted:#7a828b;
+  --line:#e6e3db;
+  --line-strong:#d8d4c9;
+  --accent:#0f6e6a;          /* teal inmunología */
+  --accent-soft:#e2f1ef;
+  --accent-ink:#0b4f4c;
+  --maxw:860px;
+
+  /* callouts */
+  --def:#2563a8;    --def-bg:#eaf2fb;   --def-br:#bcd6f2;
+  --key:#9a6a00;    --key-bg:#fdf4e0;   --key-br:#f0dca8;
+  --ej:#2f7d4f;     --ej-bg:#e9f5ec;    --ej-br:#bfe3c9;
+  --tip:#7a4bb5;    --tip-bg:#f3edfb;   --tip-br:#ddccf2;
+  --warn:#b23b3b;   --warn-bg:#fcecec;  --warn-br:#f2c9c9;
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --bg:#15171a; --surface:#1d2024; --surface-2:#22262b;
+    --ink:#e8eaed; --ink-soft:#c2c7cd; --muted:#8c949d;
+    --line:#2d3237; --line-strong:#3a4147;
+    --accent:#4fc9c0; --accent-soft:#113b39; --accent-ink:#bdeeea;
+    --def:#7fb2e8; --def-bg:#13263b; --def-br:#244a6e;
+    --key:#e5bd63; --key-bg:#3a2f14; --key-br:#5e4c21;
+    --ej:#7fd69c; --ej-bg:#16331f; --ej-br:#2b5a39;
+    --tip:#c3a6ec; --tip-bg:#2a1f3d; --tip-br:#453363;
+    --warn:#ef9a9a; --warn-bg:#3a1e1e; --warn-br:#5e3030;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171a; --surface:#1d2024; --surface-2:#22262b;
+  --ink:#e8eaed; --ink-soft:#c2c7cd; --muted:#8c949d;
+  --line:#2d3237; --line-strong:#3a4147;
+  --accent:#4fc9c0; --accent-soft:#113b39; --accent-ink:#bdeeea;
+  --def:#7fb2e8; --def-bg:#13263b; --def-br:#244a6e;
+  --key:#e5bd63; --key-bg:#3a2f14; --key-br:#5e4c21;
+  --ej:#7fd69c; --ej-bg:#16331f; --ej-br:#2b5a39;
+  --tip:#c3a6ec; --tip-bg:#2a1f3d; --tip-br:#453363;
+  --warn:#ef9a9a; --warn-bg:#3a1e1e; --warn-br:#5e3030;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:18px; line-height:1.68; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px 120px;}
+
+/* ---------- Cover ---------- */
+.cover{
+  max-width:var(--maxw); margin:0 auto; padding:64px 20px 40px; text-align:left;
+}
+.eyebrow{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  letter-spacing:.14em; text-transform:uppercase; font-size:.72rem; font-weight:700;
+  color:var(--accent); margin:0 0 10px;
+}
+.cover h1{
+  font-size:2.5rem; line-height:1.12; margin:0 0 6px; letter-spacing:-.01em;
+}
+.cover .sub{font-size:1.18rem; color:var(--ink-soft); margin:0 0 22px; font-style:italic;}
+.cover .meta{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.82rem; color:var(--muted); display:flex; gap:8px 18px; flex-wrap:wrap;
+  border-top:1px solid var(--line); padding-top:16px;
+}
+.meta b{color:var(--ink-soft); font-weight:600;}
+
+/* ---------- Index ---------- */
+.toc{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:20px 24px; margin:26px auto 10px;
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+.toc h2{font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 12px; border:0; padding:0;}
+.toc ol{margin:0; padding-left:1.1em; columns:2; column-gap:34px;}
+.toc li{margin:5px 0; font-size:.92rem; break-inside:avoid;}
+.toc a{color:var(--ink-soft); text-decoration:none;}
+.toc a:hover{color:var(--accent);}
+@media(max-width:620px){.toc ol{columns:1}}
+
+/* ---------- Headings ---------- */
+h2.part{
+  font-family:"SF Pro Display",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; font-weight:700;
+  color:#fff; background:var(--accent); display:inline-block;
+  padding:7px 16px; border-radius:999px; margin:72px 0 6px;
+}
+h2{
+  font-size:1.62rem; letter-spacing:-.01em; margin:40px 0 4px; padding-bottom:8px;
+  border-bottom:2px solid var(--line-strong); scroll-margin-top:20px;
+}
+h3{font-size:1.24rem; margin:34px 0 2px; color:var(--accent-ink); scroll-margin-top:20px;}
+h4{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.86rem; letter-spacing:.04em; text-transform:uppercase; color:var(--muted);
+  margin:22px 0 2px; font-weight:700;
+}
+p{margin:12px 0;}
+a{color:var(--accent);}
+strong{color:var(--ink); font-weight:700;}
+em{color:var(--ink-soft);}
+.lead{font-size:1.08rem; color:var(--ink-soft);}
+
+ul,ol{margin:12px 0; padding-left:1.4em;}
+li{margin:7px 0;}
+li::marker{color:var(--accent);}
+ul ul,ol ul,ul ol{margin:6px 0;}
+
+code,.mol{
+  font-family:"SF Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.86em; background:var(--accent-soft); color:var(--accent-ink);
+  padding:1px 6px; border-radius:5px; font-weight:600; white-space:nowrap;
+}
+
+/* ---------- Callouts ---------- */
+.box{
+  border:1px solid var(--line); border-left-width:5px; border-radius:10px;
+  padding:14px 18px; margin:18px 0; background:var(--surface);
+}
+.box .tag{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+  display:block; margin-bottom:4px;
+}
+.box p:first-of-type{margin-top:2px}.box p:last-child{margin-bottom:2px}
+.box.def{border-color:var(--def-br); background:var(--def-bg);} .box.def .tag{color:var(--def);}
+.box.key{border-color:var(--key-br); background:var(--key-bg);} .box.key .tag{color:var(--key);}
+.box.ej{border-color:var(--ej-br); background:var(--ej-bg);} .box.ej .tag{color:var(--ej);}
+.box.tip{border-color:var(--tip-br); background:var(--tip-bg);} .box.tip .tag{color:var(--tip);}
+.box.warn{border-color:var(--warn-br); background:var(--warn-bg);} .box.warn .tag{color:var(--warn);}
+
+/* ---------- Tables ---------- */
+.tablewrap{overflow-x:auto; margin:20px 0; border:1px solid var(--line); border-radius:12px;}
+table{
+  border-collapse:collapse; width:100%; font-size:.9rem;
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+th,td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+thead th{
+  background:var(--surface-2); color:var(--ink); font-size:.74rem; letter-spacing:.05em;
+  text-transform:uppercase; border-bottom:2px solid var(--line-strong);
+}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr:nth-child(even){background:var(--surface-2);}
+td .mol{white-space:nowrap}
+
+/* ---------- Figures ---------- */
+figure{margin:26px 0; text-align:center;}
+figure svg{max-width:100%; height:auto; display:block; margin:0 auto;
+  background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px;}
+figcaption{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.8rem; color:var(--muted); margin-top:10px; font-style:italic;
+}
+.fig-svg text{font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+
+/* chips row */
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0;}
+.chip{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.8rem; font-weight:600; padding:6px 12px; border-radius:999px;
+  background:var(--accent-soft); color:var(--accent-ink); border:1px solid var(--line);
+}
+
+.hr{height:1px; background:var(--line); border:0; margin:42px 0;}
+.footer{
+  font-family:"SF Pro Text",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:.78rem; color:var(--muted); text-align:center; margin-top:70px;
+  border-top:1px solid var(--line); padding-top:22px;
+}
+.anchor{display:block; position:relative; top:-10px; visibility:hidden;}
+.src{font-size:.72rem; color:var(--muted); font-style:italic; font-family:"SF Pro Text",sans-serif;}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <p class="eyebrow">Inmunología · Bloque II — Sistemas auxiliares</p>
+  <h1>Tema 6 · Mediadores solubles de la respuesta inmune</h1>
+  <p class="sub">Citoquinas y sistema del complemento</p>
+  <div class="meta">
+    <span><b>Grado:</b> 4.º Biología (UAM)</span>
+    <span><b>Fuente:</b> apuntes + presentación de clase</span>
+    <span><b>Contenido:</b> citoquinas · complemento · componentes solubles · regulación</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+<nav class="toc">
+  <h2>Índice</h2>
+  <ol>
+    <li><a href="#citoquinas">Citoquinas: concepto y cualidades</a></li>
+    <li><a href="#clasif-cito">Clasificación de las citoquinas</a></li>
+    <li><a href="#complemento">El sistema del complemento</a></li>
+    <li><a href="#sintesis">Síntesis y nomenclatura</a></li>
+    <li><a href="#vias">Las tres vías de activación</a></li>
+    <li><a href="#clasica">Vía clásica</a></li>
+    <li><a href="#alternativa">Vía alternativa</a></li>
+    <li><a href="#lectinas">Vía de las lectinas</a></li>
+    <li><a href="#otros">Otros componentes solubles</a></li>
+    <li><a href="#receptores">Receptores del complemento</a></li>
+    <li><a href="#funciones">Funciones del complemento</a></li>
+    <li><a href="#regulacion">Regulación del complemento</a></li>
+    <li><a href="#resumen">Resumen integrador</a></li>
+  </ol>
+</nav>
+
+<p class="lead">Los <strong>mediadores solubles</strong> son las moléculas que, disueltas en los fluidos corporales, coordinan y ejecutan la respuesta inmunitaria sin necesidad de contacto célula-célula directo. En este tema se agrupan dos grandes protagonistas: las <strong>citoquinas</strong> (los “mensajeros” que comunican a las células del sistema inmune) y el <strong>sistema del complemento</strong> (una cascada de proteínas plasmáticas efectoras). A ellos se suman otras proteínas solubles de reconocimiento —colectinas, ficolinas y pentraxinas— que conectan ambos mundos.</p>
+
+<!-- ============================================================= -->
+<span id="citoquinas" class="anchor"></span>
+<h2 class="part">Parte 1 · Citoquinas</h2>
+<h2>Citoquinas: concepto y cualidades</h2>
+
+<div class="box def">
+  <span class="tag">Definición</span>
+  <p>Las <strong>citoquinas</strong> son <strong>proteínas solubles</strong> secretadas durante las fases efectoras de la inmunidad que actúan como <strong>mensajeros del sistema inmune</strong>: comunican células entre sí e inducen respuestas intercelulares. Ejercen su efecto uniéndose a <strong>receptores de alta afinidad</strong> en la célula diana, lo que desencadena <strong>señalización intracelular</strong> y cambios en la <strong>expresión génica</strong>.</p>
+</div>
+
+<h3>Radio de acción</h3>
+<p>Según la distancia a la que actúa la citoquina respecto de la célula que la produce, su efecto puede ser:</p>
+<ul>
+  <li><strong>Autocrino:</strong> actúa sobre la <strong>propia célula</strong> que la secreta.</li>
+  <li><strong>Paracrino:</strong> actúa sobre <strong>células cercanas</strong>.</li>
+  <li><strong>Endocrino:</strong> viaja por la sangre y actúa sobre <strong>células distantes</strong> (efecto sistémico, p. ej. la fiebre inducida por IL-1, IL-6 o TNF-α).</li>
+</ul>
+
+<figure>
+<svg class="fig-svg" viewBox="0 0 760 210" role="img" aria-label="Efectos autocrino, paracrino y endocrino de las citoquinas">
+  <defs>
+    <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0f6e6a"/></marker>
+  </defs>
+  <!-- autocrino -->
+  <circle cx="110" cy="105" r="34" fill="#e2f1ef" stroke="#0f6e6a" stroke-width="2"/>
+  <path d="M110,72 C150,55 150,155 110,138" fill="none" stroke="#0f6e6a" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="110" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0b4f4c">célula</text>
+  <text x="110" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">AUTOCRINO</text>
+  <text x="110" y="198" text-anchor="middle" font-size="10.5" fill="#7a828b">sobre sí misma</text>
+  <!-- paracrino -->
+  <circle cx="340" cy="105" r="30" fill="#e2f1ef" stroke="#0f6e6a" stroke-width="2"/>
+  <circle cx="440" cy="105" r="30" fill="#faf9f6" stroke="#7a828b" stroke-width="1.6"/>
+  <line x1="372" y1="105" x2="406" y2="105" stroke="#0f6e6a" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="340" y="110" text-anchor="middle" font-size="12" font-weight="700" fill="#0b4f4c">emisora</text>
+  <text x="440" y="110" text-anchor="middle" font-size="12" fill="#4a5159">diana</text>
+  <text x="390" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">PARACRINO</text>
+  <text x="390" y="198" text-anchor="middle" font-size="10.5" fill="#7a828b">células vecinas</text>
+  <!-- endocrino -->
+  <circle cx="610" cy="105" r="26" fill="#e2f1ef" stroke="#0f6e6a" stroke-width="2"/>
+  <circle cx="712" cy="105" r="26" fill="#faf9f6" stroke="#7a828b" stroke-width="1.6"/>
+  <path d="M636,105 q38,-26 50,0" fill="none" stroke="#0f6e6a" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+  <text x="674" y="70" text-anchor="middle" font-size="10.5" fill="#7a828b">sangre</text>
+  <text x="661" y="182" text-anchor="middle" font-size="13" font-weight="700" fill="#1f2328">ENDOCRINO</text>
+  <text x="661" y="198" text-anchor="middle" font-size="10.5" fill="#7a828b">células distantes</text>
+</svg>
+<figcaption>Las tres formas de acción de una citoquina según su radio de alcance.</figcaption>
+</figure>
+
+<h3>Las cuatro cualidades de las citoquinas</h3>
+<p>El comportamiento de las citoquinas se describe con cuatro propiedades características que explican por qué una misma red de señales puede ser tan versátil y, a la vez, tan robusta:</p>
+
+<h4>Pleiotropía</h4>
+<p>Una <strong>misma citoquina</strong> actúa sobre <strong>distintos tipos celulares</strong> provocando <strong>funciones diferentes</strong> en cada uno.</p>
+<div class="box ej"><span class="tag">Ejemplo</span><p>La <strong>IL-4</strong> induce el cambio de isotipo a IgE en el linfocito B y, a la vez, favorece la diferenciación de los linfocitos T hacia el perfil Th2.</p></div>
+
+<h4>Redundancia</h4>
+<p><strong>Citoquinas diferentes</strong> producen el <strong>mismo efecto</strong> biológico. Esto garantiza que la respuesta no se pierda si falta una de ellas.</p>
+<div class="box ej"><span class="tag">Ejemplo</span><p>La <strong>proliferación</strong> del linfocito B puede ser inducida por IL-2, IL-4 o IL-5; la <strong>diferenciación</strong>, por IL-4 o IL-6.</p></div>
+
+<h4>Sinergismo</h4>
+<p>El efecto <strong>combinado</strong> de dos citoquinas es <strong>mayor</strong> que la suma de sus efectos por separado; cooperan para un mismo fin.</p>
+<div class="box ej"><span class="tag">Ejemplos</span>
+  <p>· <strong>IL-4 + IL-5</strong> sobre el linfocito B → potencian el <strong>cambio de isotipo a IgE</strong> (partiendo de IgM).<br>
+  · <strong>IFN-γ + TNF</strong> → aumentan de forma cooperativa la expresión de <strong>MHC de clase I</strong> en las células.</p>
+</div>
+
+<h4>Antagonismo</h4>
+<p>Una citoquina <strong>inhibe o bloquea</strong> el efecto de otra; es la base del equilibrio entre respuestas opuestas.</p>
+<div class="box ej"><span class="tag">Ejemplos</span>
+  <p>· Sobre el cambio de isotipo a <strong>IgE</strong> en el linfocito B: la <strong>IL-4 induce</strong> el cambio, mientras que el <strong>IFN-γ lo bloquea</strong>.<br>
+  · Sobre el macrófago (MΦ): el <strong>IFN-γ activa</strong> / la <strong>IL-4 inhibe</strong>.</p>
+</div>
+
+<div class="box tip"><span class="tag">Truco para recordarlas</span><p><strong>“Pleiotropía y Redundancia”</strong> describen la relación <em>citoquina ↔ efecto</em> (una→muchos / muchas→uno); <strong>“Sinergismo y Antagonismo”</strong> describen cómo se relacionan <em>dos citoquinas entre sí</em> (suman / se oponen).</p></div>
+
+<!-- ============================================================= -->
+<span id="clasif-cito" class="anchor"></span>
+<h2>Clasificación de las citoquinas</h2>
+
+<h3>Según dónde actúan</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Grupo</th><th>Secretadas por</th><th>Ejemplos</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Inmunidad innata</strong></td><td>Principalmente <strong>fagocitos</strong></td><td>TNF-α, IL-1, IL-6, quimiocinas (CXCL8, CCL2, CCL3), IL-12, IFN-α/β, IL-10</td></tr>
+    <tr><td><strong>Inmunidad adaptativa</strong></td><td><strong>Linfocitos T</strong></td><td>IL-2, IL-4, IL-5, IL-13, IL-10, IFN-γ, TGF-β, IL-17</td></tr>
+    <tr><td><strong>Hematopoyéticas</strong></td><td>Estroma medular y leucocitos</td><td>Ligando de c-Kit, GM-CSF, G-CSF, interleucinas (2, 4, 5, 6, 7, 9, 11, 13)</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="src">Nota: algunas citoquinas (p. ej. IL-10) aparecen en más de un grupo porque las produce más de un tipo celular.</p>
+
+<h3>Según su función</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Tipo funcional</th><th>Citoquinas</th><th>Papel</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pro-inflamatorias</strong></td><td>IL-1, IL-2, IL-6, IL-8, IL-12, IL-16, TNF-α, TNF-β, IFN-γ</td><td>Amplifican la inflamación y la respuesta efectora</td></tr>
+    <tr><td><strong>Anti-inflamatorias</strong></td><td>IL-4, IL-10, IL-11, IL-13, IFN-α, IFN-β, TGF-β</td><td>Frenan y resuelven la inflamación</td></tr>
+    <tr><td><strong>Quimiocinas</strong></td><td>IL-8 (CXCL8), CCL-19, CCL-21, CXCL-12</td><td>Estimulan la <strong>movilidad y migración</strong> celular (quimiotaxis)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box key"><span class="tag">Idea clave</span><p>Las citoquinas no son el efector final por sí mismas: su misión es <strong>coordinar</strong>. Dirigen quién prolifera, quién se diferencia, hacia dónde migran las células y qué isotipo de anticuerpo se produce. El <strong>complemento</strong>, en cambio, es un efector <strong>directo</strong>.</p></div>
+
+<!-- ============================================================= -->
+<span id="complemento" class="anchor"></span>
+<h2 class="part">Parte 2 · Sistema del complemento</h2>
+<h2>El sistema del complemento</h2>
+
+<div class="box def">
+  <span class="tag">Definición</span>
+  <p>El <strong>sistema del complemento</strong> es un conjunto de <strong>proteínas plasmáticas</strong> (algunas también de membrana) que interaccionan entre sí y con otros componentes del sistema inmunológico. Es un <strong>efector importante de la inmunidad humoral</strong>: <strong>asiste y complementa</strong> —de ahí su nombre— las respuestas de la inmunidad tanto <strong>innata</strong> como <strong>adaptativa</strong>.</p>
+</div>
+
+<h3>Características generales</h3>
+<ul>
+  <li><strong>Inactivo en condiciones normales:</strong> las proteínas circulan en forma <strong>inactiva</strong> y solo se activan por <strong>proteólisis secuencial</strong> (reacciones en cascada) ante la presencia de patógenos o lesión tisular mediada por anticuerpos.</li>
+  <li><strong>Regulación estricta:</strong> como su activación puede desencadenar inflamación y destrucción celular, está regulado de forma muy cuidadosa para <strong>evitar daños a las células propias</strong>.</li>
+  <li><strong>Amplificación en cascada:</strong> el producto de cada reacción es el <strong>catalizador enzimático</strong> de la siguiente, de modo que una señal inicial pequeña se amplifica masivamente.</li>
+</ul>
+
+<h3>Lógica de la proteólisis secuencial</h3>
+<p>Cada proteína del complemento se activa al ser cortada en dos fragmentos. Por convenio funcional:</p>
+<ul>
+  <li><strong>Fragmento grande (“b”):</strong> normalmente permanece anclado y actúa como <strong>catalizador</strong> (enzima/esterasa) de la siguiente reacción de la cascada.</li>
+  <li><strong>Fragmento pequeño (“a”):</strong> se libera y tiene <strong>actividad biológica</strong> propia (quimiotaxis, inflamación…).</li>
+</ul>
+<div class="box warn"><span class="tag">Ojo — excepción de nomenclatura</span><p>En el <strong>C2</strong> la asignación histórica se invierte en muchos textos: el fragmento <strong>grande</strong> que forma parte de la convertasa puede aparecer como <span class="mol">C2a</span> o como <span class="mol">C2b</span> según la fuente. En esta asignatura la C3 convertasa de la vía clásica se escribe <span class="mol">C4b2b</span> (con el fragmento grande de C2 = 2b). Mantén el criterio de tu profesora para el examen.</p></div>
+
+<figure>
+<svg class="fig-svg" viewBox="0 0 720 150" role="img" aria-label="Esquema de proteólisis secuencial de una proteína del complemento">
+  <defs><marker id="ar2" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="#0f6e6a"/></marker></defs>
+  <rect x="40" y="55" width="120" height="40" rx="8" fill="#e2f1ef" stroke="#0f6e6a" stroke-width="2"/>
+  <text x="100" y="80" text-anchor="middle" font-size="14" font-weight="700" fill="#0b4f4c">Proteína C</text>
+  <text x="100" y="118" text-anchor="middle" font-size="10.5" fill="#7a828b">(inactiva)</text>
+  <line x1="162" y1="75" x2="236" y2="75" stroke="#0f6e6a" stroke-width="2" marker-end="url(#ar2)"/>
+  <text x="199" y="64" text-anchor="middle" font-size="10.5" fill="#9a6a00" font-weight="700">esterasa</text>
+  <!-- fragmentos -->
+  <rect x="245" y="30" width="150" height="34" rx="8" fill="#fdf4e0" stroke="#9a6a00" stroke-width="1.8"/>
+  <text x="320" y="52" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9a6a00">Fragmento “a” (pequeño)</text>
+  <rect x="245" y="86" width="150" height="34" rx="8" fill="#e9f5ec" stroke="#2f7d4f" stroke-width="1.8"/>
+  <text x="320" y="108" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2f7d4f">Fragmento “b” (grande)</text>
+  <text x="320" y="20" text-anchor="middle" font-size="10.5" fill="#7a828b">actividad biológica</text>
+  <!-- next -->
+  <line x1="397" y1="103" x2="470" y2="103" stroke="#0f6e6a" stroke-width="2" marker-end="url(#ar2)"/>
+  <text x="433" y="94" text-anchor="middle" font-size="10" fill="#7a828b">cataliza</text>
+  <rect x="478" y="83" width="200" height="40" rx="8" fill="#e2f1ef" stroke="#0f6e6a" stroke-width="2"/>
+  <text x="578" y="107" text-anchor="middle" font-size="13" font-weight="700" fill="#0b4f4c">siguiente reacción</text>
+</svg>
+<figcaption>El fragmento grande cataliza el siguiente paso; el pequeño difunde y media inflamación.</figcaption>
+</figure>
+
+<!-- ============================================================= -->
+<span id="sintesis" class="anchor"></span>
+<h2>Síntesis y nomenclatura</h2>
+
+<h3>¿Dónde se sintetizan las proteínas del complemento?</h3>
+<p>La mayoría se producen en el <strong>hígado</strong> y el <strong>bazo</strong>, pero varios tejidos contribuyen con componentes concretos:</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Lugar de síntesis</th><th>Componentes que aporta</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Hígado</strong> (fuente principal)</td><td><span class="mol">C3</span>, <span class="mol">C6</span>, <span class="mol">C9</span>, <span class="mol">C1-INH</span></td></tr>
+    <tr><td><strong>Bazo</strong></td><td><span class="mol">C6</span> y <span class="mol">C8</span></td></tr>
+    <tr><td><strong>Células del epitelio intestinal</strong></td><td><span class="mol">C1</span></td></tr>
+    <tr><td><strong>Macrófagos</strong></td><td><span class="mol">C1</span>–<span class="mol">C5</span>, factores <span class="mol">B</span>, <span class="mol">D</span>, <span class="mol">P</span>, <span class="mol">H</span> e <span class="mol">I</span></td></tr>
+    <tr><td><strong>Fibroblastos</strong></td><td><span class="mol">C3</span>–<span class="mol">C9</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Nomenclatura</h3>
+<p>El nombre de cada componente depende de la vía en la que participe:</p>
+<ul>
+  <li><strong>Vía clásica:</strong> letra <strong>C mayúscula + número</strong> (C1, C2, C3…) y, tras la proteólisis, un <strong>sufijo en minúscula</strong> que indica el fragmento (<span class="mol">C3</span> → <span class="mol">C3a</span> + <span class="mol">C3b</span>).</li>
+  <li><strong>Vía alternativa:</strong> se usan <strong>letras mayúsculas</strong> (factor <strong>B</strong>, factor <strong>D</strong>) con los mismos sufijos (<span class="mol">B</span> → <span class="mol">Ba</span> + <span class="mol">Bb</span>).</li>
+</ul>
+<div class="box key"><span class="tag">Recuerda</span><p>El <strong>orden de los números NO es el orden de activación</strong>. El orden real en la vía clásica es <span class="mol">C1 → C4 → C2 → C3 → C5 → C6 → C7 → C8 → C9</span> (el C4 y el C2 se numeraron antes de conocer bien la secuencia).</p></div>
+
+<!-- ============================================================= -->
+<span id="vias" class="anchor"></span>
+<h2>Las tres vías de activación</h2>
+<p>Existen <strong>tres vías</strong> que se diferencian en <strong>cómo se inician</strong>, pero que <strong>convergen</strong> todas en la hidrólisis del <span class="mol">C3</span>. A partir de ahí los pasos son <strong>idénticos</strong>: formación de la C5 convertasa, del MAC y eliminación del patógeno.</p>
+
+<div class="chips">
+  <span class="chip">Vía clásica → inmunidad adaptativa</span>
+  <span class="chip">Vía alternativa → inmunidad innata</span>
+  <span class="chip">Vía de las lectinas → inmunidad innata</span>
+</div>
+
+<figure>
+<svg class="fig-svg" viewBox="0 0 760 470" role="img" aria-label="Esquema de convergencia de las tres vías del complemento">
+  <defs><marker id="ar3" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="#4a5159"/></marker></defs>
+  <style>
+    .col{font-size:13px;font-weight:700}
+    .lbl{font-size:11px;fill:#4a5159}
+    .bx{stroke-width:1.8}
+  </style>
+  <!-- headers -->
+  <text x="150" y="26" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2563a8">INMUNIDAD ADAPTATIVA</text>
+  <text x="520" y="26" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2f7d4f">INMUNIDAD INNATA</text>
+  <!-- three columns -->
+  <!-- clasica -->
+  <rect x="80" y="40" width="140" height="38" rx="8" class="bx" fill="#eaf2fb" stroke="#2563a8"/>
+  <text x="150" y="64" text-anchor="middle" class="col" fill="#2563a8">Vía clásica</text>
+  <!-- lectinas -->
+  <rect x="300" y="40" width="160" height="38" rx="8" class="bx" fill="#e9f5ec" stroke="#2f7d4f"/>
+  <text x="380" y="64" text-anchor="middle" class="col" fill="#2f7d4f">Vía de las lectinas</text>
+  <!-- alternativa -->
+  <rect x="540" y="40" width="150" height="38" rx="8" class="bx" fill="#e9f5ec" stroke="#2f7d4f"/>
+  <text x="615" y="64" text-anchor="middle" class="col" fill="#2f7d4f">Vía alternativa</text>
+  <!-- triggers -->
+  <rect x="80" y="98" width="140" height="44" rx="8" fill="#f6f5f1" stroke="#d8d4c9"/>
+  <text x="150" y="116" text-anchor="middle" class="lbl">Complejos</text>
+  <text x="150" y="132" text-anchor="middle" class="lbl">Ag–Ac</text>
+  <rect x="300" y="98" width="160" height="44" rx="8" fill="#f6f5f1" stroke="#d8d4c9"/>
+  <text x="380" y="116" text-anchor="middle" class="lbl">Manosas en</text>
+  <text x="380" y="132" text-anchor="middle" class="lbl">superficie del patógeno</text>
+  <rect x="540" y="98" width="150" height="44" rx="8" fill="#f6f5f1" stroke="#d8d4c9"/>
+  <text x="615" y="116" text-anchor="middle" class="lbl">C3 en superficie</text>
+  <text x="615" y="132" text-anchor="middle" class="lbl">del patógeno</text>
+  <!-- initiators -->
+  <rect x="80" y="160" width="140" height="44" rx="8" fill="#fff" stroke="#d8d4c9"/>
+  <text x="150" y="178" text-anchor="middle" class="lbl" font-weight="700">C1q, C1r, C1s</text>
+  <text x="150" y="194" text-anchor="middle" class="lbl">C4, C2</text>
+  <rect x="300" y="160" width="160" height="44" rx="8" fill="#fff" stroke="#d8d4c9"/>
+  <text x="380" y="178" text-anchor="middle" class="lbl" font-weight="700">MBL, MASP-1, MASP-2</text>
+  <text x="380" y="194" text-anchor="middle" class="lbl">C4, C2</text>
+  <rect x="540" y="160" width="150" height="44" rx="8" fill="#fff" stroke="#d8d4c9"/>
+  <text x="615" y="186" text-anchor="middle" class="lbl" font-weight="700">C3, B, D</text>
+  <!-- arrows to convertase -->
+  <line x1="150" y1="204" x2="330" y2="250" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <line x1="380" y1="204" x2="380" y2="250" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <line x1="615" y1="204" x2="430" y2="250" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <!-- C3 convertases -->
+  <rect x="250" y="256" width="260" height="40" rx="20" fill="#0f6e6a"/>
+  <text x="380" y="281" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">C3 convertasas</text>
+  <text x="300" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#2563a8">C4b2b</text>
+  <text x="380" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#2f7d4f">C4b2b</text>
+  <text x="460" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#2f7d4f">C3bBb</text>
+  <!-- C3 central -->
+  <circle cx="380" cy="356" r="22" fill="#fdf4e0" stroke="#9a6a00" stroke-width="2"/>
+  <text x="380" y="361" text-anchor="middle" font-size="13" font-weight="700" fill="#9a6a00">C3</text>
+  <line x1="380" y1="326" x2="380" y2="333" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <!-- outputs -->
+  <line x1="358" y1="356" x2="210" y2="356" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <rect x="60" y="336" width="150" height="40" rx="8" fill="#fdf4e0" stroke="#9a6a00" stroke-width="1.6"/>
+  <text x="135" y="354" text-anchor="middle" font-size="10.5" fill="#9a6a00" font-weight="700">C4a · C3a · C5a</text>
+  <text x="135" y="369" text-anchor="middle" font-size="10" fill="#9a6a00">mediadores inflamación</text>
+  <line x1="380" y1="378" x2="380" y2="408" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <rect x="300" y="412" width="160" height="42" rx="8" fill="#eaf2fb" stroke="#2563a8" stroke-width="1.6"/>
+  <text x="380" y="430" text-anchor="middle" font-size="11" font-weight="700" fill="#2563a8">C3b → opsonización</text>
+  <text x="380" y="445" text-anchor="middle" font-size="10" fill="#2563a8">eliminación de inmunocomplejos</text>
+  <line x1="402" y1="356" x2="560" y2="356" stroke="#4a5159" stroke-width="1.6" marker-end="url(#ar3)"/>
+  <rect x="560" y="336" width="150" height="40" rx="8" fill="#e9f5ec" stroke="#2f7d4f" stroke-width="1.6"/>
+  <text x="635" y="354" text-anchor="middle" font-size="11" font-weight="700" fill="#2f7d4f">MAC</text>
+  <text x="635" y="369" text-anchor="middle" font-size="10" fill="#2f7d4f">lisis del patógeno</text>
+</svg>
+<figcaption>Las tres vías convergen en la hidrólisis de <span class="mol">C3</span>; desde ahí comparten efectores (inflamación, opsonización y MAC).</figcaption>
+</figure>
+
+<!-- ============================================================= -->
+<span id="clasica" class="anchor"></span>
+<h2>Vía clásica</h2>
+<p>Es la vía ligada a la <strong>inmunidad adaptativa</strong>, porque se activa principalmente en respuesta a <strong>complejos antígeno-anticuerpo (Ag-Ac)</strong>. También puede dispararse por ciertos virus y bacterias y por fosfolípidos/proteínas mitocondriales expuestos en <strong>isquemia o apoptosis</strong> (que se unen a C1q a través de la <strong>proteína C reactiva</strong>). Está asociada sobre todo a los anticuerpos <strong>IgM</strong> e <strong>IgG</strong> (subclases IgG1 e IgG3).</p>
+
+<h3>El complejo C1</h3>
+<p>El complejo <span class="mol">C1</span> está formado por tres subunidades:</p>
+<ul>
+  <li><strong>C1q</strong> — unidad de <strong>reconocimiento</strong>: se une a la región <strong>Fc</strong> de IgM o IgG.</li>
+  <li><strong>C1r y C1s</strong> — unidades <strong>enzimáticas</strong>: son proteasas (actividad serín-proteasa).</li>
+</ul>
+<div class="box key"><span class="tag">Punto clave de la activación</span><p>Cada molécula de <strong>C1q</strong> debe unirse <strong>al menos a 2 regiones Fc</strong> para activarse. Por eso <strong>no puede unirse a inmunoglobulinas solubles</strong>, sino únicamente a <strong>Ig unidas a una superficie</strong> celular o que formen parte de <strong>inmunocomplejos</strong> (donde los Fc quedan próximos entre sí). Esto evita que el complemento se active “en el aire”.</p></div>
+
+<h3>Pasos de la vía clásica</h3>
+<ol>
+  <li><strong>Interacción inicial:</strong> <span class="mol">C1q</span> se une a los anticuerpos (IgM/IgG) adheridos a la superficie del patógeno o al inmunocomplejo.</li>
+  <li><strong>Activación enzimática:</strong> se activan <span class="mol">C1r</span> y <span class="mol">C1s</span>, que actúan como proteasas.</li>
+  <li><strong>Hidrólisis de C4:</strong> C1s corta <span class="mol">C4</span> en <span class="mol">C4a</span> (pequeño) y <span class="mol">C4b</span> (grande). El <span class="mol">C4b</span> se <strong>ancla a la membrana</strong>.</li>
+  <li><strong>Reclutamiento de C2:</strong> <span class="mol">C2</span> se une al C4b y es cortado por C1s en <span class="mol">C2a</span> y <span class="mol">C2b</span>, formando el complejo <span class="mol">C4b2b</span> = <strong>C3 convertasa</strong> de la vía clásica.</li>
+  <li><strong>Hidrólisis de C3:</strong> la C3 convertasa (<span class="mol">C4b2b</span>) corta <span class="mol">C3</span> en <span class="mol">C3a</span> (proinflamatorio) y <span class="mol">C3b</span> (se une a la superficie).</li>
+  <li><strong>Formación de la C5 convertasa:</strong> un <span class="mol">C3b</span> se asocia al complejo → <span class="mol">C4b2b3b</span> = <strong>C5 convertasa</strong>.</li>
+  <li><strong>Hidrólisis de C5:</strong> la C5 convertasa corta <span class="mol">C5</span> en <span class="mol">C5a</span> (potente mediador inflamatorio) y <span class="mol">C5b</span>.</li>
+  <li><strong>Formación del MAC:</strong> <span class="mol">C5b</span> recluta <span class="mol">C6</span>, <span class="mol">C7</span>, <span class="mol">C8</span> y promueve la polimerización de <span class="mol">C9</span>, formando el <strong>poro de ataque a la membrana (MAC)</strong> que perfora al patógeno y causa su <strong>lisis</strong>. <em>(Pasos 7-8 son comunes a las tres vías.)</em></li>
+</ol>
+
+<div class="box tip"><span class="tag">Resumen en 6 golpes</span><p><span class="mol">C1q</span> reconoce → se activan <span class="mol">C1r/C1s</span> → cortan <span class="mol">C4</span> y <span class="mol">C2</span> (= C3 convertasa <span class="mol">C4b2b</span>) → cortan <span class="mol">C3</span> (C3a inflamación + C3b opsonización) → C5 convertasa + corte de <span class="mol">C5</span> → <strong>MAC</strong> y lisis.</p></div>
+
+<h3>Proteínas de la vía clásica</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Forma activa</th><th>Función</th></tr></thead>
+  <tbody>
+    <tr><td><span class="mol">C1q</span></td><td>Se une a complejos Ag-Ac / activa C1r</td></tr>
+    <tr><td><span class="mol">C1r</span></td><td>Corta y activa C1s</td></tr>
+    <tr><td><span class="mol">C1s</span></td><td>Corta C2 y C4</td></tr>
+    <tr><td><span class="mol">C4b</span></td><td>Se une al patógeno y lo <strong>opsoniza</strong>; une C2 para su proteólisis por C1s</td></tr>
+    <tr><td><span class="mol">C4a</span></td><td>Mediador de inflamación (débil)</td></tr>
+    <tr><td><span class="mol">C2b</span></td><td>Factor enzimático de las convertasas de C3 y C5</td></tr>
+    <tr><td><span class="mol">C2a</span></td><td>Precursor de la C2-cinina (vasoactivo)</td></tr>
+    <tr><td><span class="mol">C3b</span></td><td><strong>Opsonina</strong>; inicia la amplificación de la vía alternativa; une C5 para su proteólisis por C4b2b3b</td></tr>
+    <tr><td><span class="mol">C3a</span></td><td>Anafilotoxina: mediador de inflamación (actividad media)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>El complejo de ataque a la membrana (MAC)</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Forma activa</th><th>Función</th></tr></thead>
+  <tbody>
+    <tr><td><span class="mol">C5a</span></td><td>Mediador de inflamación (<strong>actividad alta</strong>) — anafilotoxina y quimiotáctico</td></tr>
+    <tr><td><span class="mol">C5b</span></td><td>Inicia el ensamblaje del MAC</td></tr>
+    <tr><td><span class="mol">C6</span></td><td>Se une a C5b y recluta C7</td></tr>
+    <tr><td><span class="mol">C7</span></td><td>Se une a C5b-C6; forma anfifílico de inserción en la membrana</td></tr>
+    <tr><td><span class="mol">C8</span></td><td>Se une a C5b-C6-C7 e inicia la polimerización de C9</td></tr>
+    <tr><td><span class="mol">C9</span></td><td>Polimeriza con C5b-6-7-8 para formar el poro del MAC</td></tr>
+  </tbody>
+</table>
+</div>
+
+<figure>
+<svg class="fig-svg" viewBox="0 0 700 180" role="img" aria-label="Ensamblaje del complejo de ataque a la membrana">
+  <defs><marker id="ar4" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="#0f6e6a"/></marker></defs>
+  <rect x="20" y="130" width="660" height="30" fill="#efe7d6" stroke="#d8d4c9"/>
+  <text x="350" y="150" text-anchor="middle" font-size="10.5" fill="#9a6a00">membrana del patógeno</text>
+  <g font-size="12" font-weight="700">
+    <rect x="30" y="78" width="70" height="40" rx="7" fill="#eaf2fb" stroke="#2563a8"/><text x="65" y="103" text-anchor="middle" fill="#2563a8">C5b</text>
+    <rect x="140" y="78" width="60" height="40" rx="7" fill="#e9f5ec" stroke="#2f7d4f"/><text x="170" y="103" text-anchor="middle" fill="#2f7d4f">C6</text>
+    <rect x="240" y="78" width="60" height="40" rx="7" fill="#e9f5ec" stroke="#2f7d4f"/><text x="270" y="103" text-anchor="middle" fill="#2f7d4f">C7</text>
+    <rect x="340" y="78" width="60" height="40" rx="7" fill="#fdf4e0" stroke="#9a6a00"/><text x="370" y="103" text-anchor="middle" fill="#9a6a00">C8</text>
+    <rect x="445" y="60" width="18" height="70" rx="4" fill="#f3edfb" stroke="#7a4bb5"/>
+    <rect x="468" y="60" width="18" height="70" rx="4" fill="#f3edfb" stroke="#7a4bb5"/>
+    <rect x="491" y="60" width="18" height="70" rx="4" fill="#f3edfb" stroke="#7a4bb5"/>
+    <rect x="514" y="60" width="18" height="70" rx="4" fill="#f3edfb" stroke="#7a4bb5"/>
+    <text x="489" y="48" text-anchor="middle" fill="#7a4bb5" font-size="11.5">C9 polimerizado (poro)</text>
+  </g>
+  <line x1="102" y1="98" x2="135" y2="98" stroke="#0f6e6a" stroke-width="1.8" marker-end="url(#ar4)"/>
+  <line x1="202" y1="98" x2="235" y2="98" stroke="#0f6e6a" stroke-width="1.8" marker-end="url(#ar4)"/>
+  <line x1="302" y1="98" x2="335" y2="98" stroke="#0f6e6a" stroke-width="1.8" marker-end="url(#ar4)"/>
+  <line x1="402" y1="98" x2="438" y2="98" stroke="#0f6e6a" stroke-width="1.8" marker-end="url(#ar4)"/>
+  <text x="600" y="100" font-size="12.5" font-weight="700" fill="#b23b3b">→ LISIS</text>
+</svg>
+<figcaption>El MAC: C5b nuclea el ensamblaje de C6-C7-C8 y la polimerización de C9, formando un poro que lisa la célula.</figcaption>
+</figure>
+
+<div class="box key"><span class="tag">Fragmentos y su papel — memorízalo así</span>
+  <p>· <strong>Anafilotoxinas</strong> (fragmentos pequeños <strong>a</strong>): <span class="mol">C3a</span>, <span class="mol">C4a</span>, <span class="mol">C5a</span> → quimiotácticas y proinflamatorias; inducen degranulación de mastocitos y contracción del músculo liso.<br>
+  · <strong>Opsoninas</strong> (fragmentos grandes <strong>b</strong>): <span class="mol">C3b</span> y <span class="mol">C4b</span> → marcan al patógeno para la fagocitosis.<br>
+  · <span class="mol">C5b</span> → inicia el <strong>MAC</strong> (C5b-C9).</p>
+</div>
+
+<!-- ============================================================= -->
+<span id="alternativa" class="anchor"></span>
+<h2>Vía alternativa</h2>
+<p>A pesar de llamarse “alternativa”, es la que <strong>más contribuye</strong> a la activación del complemento (<strong>80-90 %</strong> del total). Forma parte de la <strong>inmunidad innata</strong> porque actúa de forma <strong>independiente de los anticuerpos</strong>.</p>
+
+<div class="box key"><span class="tag">Idea clave</span><p>La vía alternativa funciona como un <strong>bucle de amplificación</strong>: cualquier <span class="mol">C3b</span> depositado sobre una superficie —venga de donde venga, incluidas la vía clásica o la de las lectinas— puede cebar esta vía y multiplicar la producción de más C3b.</p></div>
+
+<h3>El “truco” del grupo tioéster</h3>
+<div class="box def"><span class="tag">Mecanismo molecular</span>
+  <p>La molécula de <span class="mol">C3</span> tiene un grupo interno muy reactivo, el <strong>grupo tioéster</strong> (<span class="mol">–CO–S–</span>), <strong>oculto</strong> en su estructura. Una pequeña proporción de C3 (≈ 1-2 %) sufre <strong>hidrólisis espontánea</strong> de ese enlace al reaccionar con el agua, dando lugar a <span class="mol">C3(H₂O)</span> o <span class="mol">iC3</span>: una forma <strong>soluble pero activada</strong>, funcionalmente similar al C3b. <strong>No hay proteólisis completa</strong>, solo un <strong>cambio conformacional</strong>.</p>
+  <p>Cuando la convertasa sí corta el C3, el tioéster queda <strong>accesible</strong> en el fragmento C3b e interacciona covalentemente con grupos <strong>amino o hidroxilo</strong> de proteínas, o con <strong>carbohidratos</strong> de la membrana → así el C3b queda <strong>anclado</strong> a la superficie.</p>
+</div>
+
+<h3>Pasos de la vía alternativa</h3>
+<ol>
+  <li><strong>Hidrólisis espontánea de C3</strong> → <span class="mol">C3(H₂O)/iC3</span>, de forma continua en el plasma (“tickover”).</li>
+  <li><strong>Unión a la superficie:</strong> si hay una superficie <strong>activadora</strong> (patógeno sin proteínas reguladoras propias), el C3b se <strong>ancla covalentemente</strong> a ella.</li>
+  <li><strong>Reclutamiento del factor B:</strong> el C3b anclado une el <strong>factor B</strong>.</li>
+  <li><strong>Activación por el factor D:</strong> el <strong>factor D</strong> (una serín-proteasa) corta al factor B en <span class="mol">Ba</span> y <span class="mol">Bb</span>.</li>
+  <li><strong>C3 convertasa alternativa:</strong> el fragmento <span class="mol">Bb</span> se une al C3b → <span class="mol">C3bBb</span> = <strong>C3 convertasa</strong> de la vía alternativa, que hidroliza más C3 y genera más C3b (<strong>retroalimentación positiva</strong>).</li>
+  <li><strong>Estabilización por properdina (P):</strong> la properdina <strong>estabiliza</strong> el complejo <span class="mol">C3bBb</span>. Se une a <strong>superficies microbianas y no a las células del huésped</strong>, lo que da selectividad.</li>
+  <li><strong>C5 convertasa:</strong> al añadirse otro C3b → <span class="mol">C3bBbC3b</span> = <strong>C5 convertasa</strong>, que corta C5 en C5a y C5b.</li>
+  <li><strong>MAC:</strong> a partir de C5b, igual que en la vía clásica.</li>
+</ol>
+
+<h3>Componentes de la vía alternativa</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Forma activa</th><th>Función</th></tr></thead>
+  <tbody>
+    <tr><td><span class="mol">C3b</span></td><td>Se une covalentemente a la superficie; recluta B (hidrolizado por D) → convertasa C3bBb</td></tr>
+    <tr><td><span class="mol">C3a</span></td><td>Mediador de inflamación (actividad alta)</td></tr>
+    <tr><td><span class="mol">Bb</span></td><td>Componente con actividad enzimática de la C3 convertasa (C3bBb) y la C5 convertasa (C3b₂Bb)</td></tr>
+    <tr><td><span class="mol">Ba</span></td><td>Función desconocida</td></tr>
+    <tr><td><span class="mol">Factor D</span></td><td>Serín-proteasa plasmática que hidroliza B <strong>solo cuando está unido a C3b</strong></td></tr>
+    <tr><td><span class="mol">Properdina (P)</span></td><td>Estabiliza C3bBb sobre superficies microbianas</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ============================================================= -->
+<span id="lectinas" class="anchor"></span>
+<h2>Vía de las lectinas</h2>
+<p>Es otra forma de activación de la <strong>inmunidad innata</strong>. Puede considerarse una <strong>ruta adicional / un “refuerzo” de la vía clásica</strong>, pero <strong>sin anticuerpos</strong>: en lugar de reconocer Ag-Ac, reconoce <strong>patrones moleculares asociados a patógenos (PAMPs)</strong>, como azúcares de la superficie de los microbios.</p>
+
+<ul>
+  <li><strong>Unidad de reconocimiento:</strong> <strong>MBL</strong> (<em>mannose-binding lectin</em>) y <strong>ficolinas</strong>.</li>
+  <li><strong>Unidad enzimática:</strong> <strong>MASP</strong> (<em>MBL-associated serine proteases</em>): MASP-1 y MASP-2. Se producen durante la <strong>fase aguda</strong> de la infección/inflamación.</li>
+</ul>
+
+<h3>Pasos de la vía de las lectinas</h3>
+<ol>
+  <li><strong>Reconocimiento:</strong> la MBL o las ficolinas se unen a residuos de <strong>manosa</strong> u otros azúcares de la superficie del patógeno. Los PAMPs reconocidos incluyen:
+    <ul>
+      <li><strong>Ácido lipoteicoico</strong> — bacterias Gram-positivas.</li>
+      <li><strong>Lipopolisacárido (LPS)</strong> — bacterias Gram-negativas.</li>
+      <li><strong>Glicanos con manosa terminal</strong> — levaduras.</li>
+    </ul>
+  </li>
+  <li><strong>Activación de MASP-1 y MASP-2</strong> tras la unión a los PAMPs.</li>
+  <li><strong>Hidrólisis de C4 y C2:</strong> las MASP cortan <span class="mol">C4</span> → C4a + C4b, y <span class="mol">C2</span> → C2a + C2b. El <span class="mol">C4b2b</span> es la <strong>C3 convertasa</strong> (idéntica a la de la vía clásica).</li>
+  <li><strong>Activación de C3:</strong> C3 → C3a + C3b; el C3b forma la C5 convertasa <span class="mol">C4b2b3b</span>.</li>
+  <li><strong>Formación del MAC</strong>, igual que en la vía clásica.</li>
+</ol>
+
+<div class="box tip"><span class="tag">Conecta las vías</span><p>La vía de las lectinas y la clásica <strong>comparten la misma convertasa</strong> (<span class="mol">C4b2b</span>); solo cambia el <strong>disparador inicial</strong> (PAMPs vs. Ag-Ac). La vía alternativa usa otra convertasa (<span class="mol">C3bBb</span>) pero <strong>todas confluyen en C3</strong>.</p></div>
+
+<!-- ============================================================= -->
+<span id="otros" class="anchor"></span>
+<h2>Otros componentes solubles (reconocimiento)</h2>
+<p>Además de las proteínas del complemento, existen otras <strong>proteínas solubles de reconocimiento</strong> de la inmunidad innata cuya función principal es <strong>activar el complemento</strong> (y actuar como opsoninas). Conectan el reconocimiento de patrones con la cascada efectora.</p>
+
+<h3>Colectinas y ficolinas</h3>
+<ul>
+  <li><strong>Colectinas:</strong> familia de proteínas <strong>triméricas o hexaméricas</strong>. Cada subunidad tiene una <strong>cola similar al colágeno</strong> conectada por un cuello a una <strong>cabeza de lectina tipo C</strong> (dependiente de calcio). Son moléculas efectoras solubles de la inmunidad innata. Ejemplos: la <strong>MBL</strong> (lectina de unión a manosa) y las proteínas del <strong>surfactante pulmonar SP-A y SP-D</strong>.</li>
+  <li><strong>Ficolinas:</strong> estructura similar a las colectinas; activan el complemento de forma análoga a la MBL. Sus ligandos son la <strong>N-acetilglucosamina</strong> y el <strong>ácido lipoteicoico</strong> (pared de bacterias Gram-positivas).</li>
+</ul>
+
+<h3>Pentraxinas</h3>
+<ul>
+  <li>Proteínas plasmáticas de <strong>estructura pentamérica</strong> que reconocen estructuras microbianas y <strong>funcionan como opsoninas</strong>.</li>
+  <li>Miembros destacados: la <strong>proteína C reactiva (PCR)</strong> —une <strong>fosforilcolina</strong>— y el <strong>péptido amiloide sérico</strong> —une <strong>fosfatidiletanolamina</strong>—. Ambas ligan estructuras presentes en membranas bacterianas y expuestas en células apoptóticas.</li>
+</ul>
+
+<div class="box def"><span class="tag">Opsoninas — definición</span><p>Las <strong>opsoninas</strong> son moléculas coadyuvantes de la fagocitosis: recubren el patógeno para que sea reconocido por los fagocitos. Entre ellas: las inmunoglobulinas <strong>IgG</strong>, componentes del complemento (<span class="mol">C3b</span>, <span class="mol">C4b</span>, <span class="mol">iC3b</span>) y la <strong>lectina fijadora de manosa (MBL)</strong>.</p></div>
+
+<!-- ============================================================= -->
+<span id="receptores" class="anchor"></span>
+<h2>Receptores del complemento</h2>
+<p>El sistema implica varios <strong>receptores</strong> que reconocen distintos fragmentos del complemento y desempeñan funciones en la fagocitosis, la eliminación de inmunocomplejos y la activación de linfocitos B.</p>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Receptor</th><th>Reconoce</th><th>Función</th><th>Células</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CR1 (CD35)</strong></td><td><span class="mol">C3b</span>, <span class="mol">C4b</span></td><td>Promueve la fagocitosis y el aclaramiento de inmunocomplejos; favorece la disociación de las convertasas</td><td>Eritrocitos, macrófagos, monocitos, PMN, linfocitos B, FDC</td></tr>
+    <tr><td><strong>CR2 (CD21)</strong></td><td><span class="mol">C3d</span>, <span class="mol">C3dg</span>, <span class="mol">iC3b</span></td><td><strong>Co-receptor del linfocito B</strong> (refuerza su activación); receptor del virus de Epstein-Barr</td><td>Linfocitos B, FDC</td></tr>
+    <tr><td><strong>CR3 (CD11b/CD18)</strong></td><td><span class="mol">iC3b</span></td><td>Estimula la fagocitosis</td><td>Macrófagos, monocitos, PMN, FDC</td></tr>
+    <tr><td><strong>CR4 (CD11c/CD18)</strong></td><td><span class="mol">iC3b</span></td><td>Estimula la fagocitosis</td><td>Macrófagos, monocitos, PMN</td></tr>
+    <tr><td><strong>Receptor de C1q</strong></td><td>C1q (región colágeno)</td><td>Fijación de inmunocomplejos a los fagocitos</td><td>Linfocitos B, macrófagos, plaquetas, células endoteliales</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="src">FDC = células dendríticas foliculares. <span class="mol">iC3b</span>, <span class="mol">C3dg</span> y <span class="mol">C3d</span> son fragmentos proteolíticos derivados del C3b.</p>
+
+<!-- ============================================================= -->
+<span id="funciones" class="anchor"></span>
+<h2>Funciones del complemento</h2>
+<p>El complemento contribuye tanto a la inmunidad <strong>innata</strong> como a la <strong>adaptativa</strong> a través de cinco grandes funciones:</p>
+
+<h3>1 · Marcaje de patógenos para su eliminación</h3>
+<ul>
+  <li><strong>Eliminación directa:</strong> formación del <strong>MAC</strong> → <strong>lisis</strong> osmótica de bacterias y células infectadas.</li>
+  <li><strong>Eliminación indirecta (opsonización):</strong> <span class="mol">C3b</span> y <span class="mol">C4b</span> actúan como <strong>opsoninas</strong>, marcando al patógeno para que macrófagos y neutrófilos (que tienen receptores para C3b, p. ej. CR1) lo reconozcan y <strong>fagociten</strong>.</li>
+</ul>
+
+<h3>2 · Eliminación de inmunocomplejos y células apoptóticas</h3>
+<ul>
+  <li>El complemento se une a los <strong>inmunocomplejos (IC)</strong> e <strong>impide que se agreguen</strong> o desestabiliza los ya formados, previniendo el daño tisular.</li>
+  <li>El <span class="mol">C3b</span> unido al IC favorece su reconocimiento por <strong>CR1</strong> en los <strong>eritrocitos</strong>, que los <strong>transportan al hígado y al bazo</strong>, donde son eliminados por fagocitos.</li>
+</ul>
+
+<h3>3 · Inflamación</h3>
+<p>Los fragmentos pequeños <span class="mol">C3a</span>, <span class="mol">C5a</span> y <span class="mol">C4a</span> (débil), las <strong>anafilotoxinas</strong>, median la inflamación:</p>
+<ul>
+  <li><strong>Quimiotaxis:</strong> atraen leucocitos (sobre todo neutrófilos y macrófagos) al foco de infección.</li>
+  <li><strong>Degranulación de mastocitos y basófilos:</strong> liberación de <strong>histamina</strong> y serotonina → <strong>aumento de la permeabilidad vascular</strong> y <strong>vasodilatación</strong>.</li>
+  <li><strong>Activación de macrófagos</strong> (actividad microbicida, ROS) y aumento de moléculas de adhesión.</li>
+</ul>
+<p class="src">Receptores: C3a y C4a → mastocitos, basófilos, endotelio, músculo liso y linfocitos. C5a → mastocitos, basófilos, neutrófilos, monocitos/macrófagos y endotelio.</p>
+
+<h3>4 · Activación de linfocitos B (potencia la respuesta humoral)</h3>
+<p>El <strong>CR2 (CD21)</strong> del linfocito B se une a fragmentos de <span class="mol">C3d</span> depositados en la superficie del patógeno. Al actuar como <strong>co-receptor</strong> junto al <strong>BCR</strong>, aumenta la eficacia de la activación del linfocito B y, por tanto, la <strong>producción de anticuerpos</strong>.</p>
+<div class="box ej"><span class="tag">Dato de la presentación</span><p>En las respuestas a microbios, la activación del linfocito B vía BCR se potencia por el antígeno <strong>cubierto de complemento</strong> (se une a BCR + CR2) y, además, por los <strong>receptores tipo Toll (TLR)</strong> que reconocen PAMPs del microbio. Es un ejemplo de cómo el complemento <strong>une la inmunidad innata con la adaptativa</strong>.</p></div>
+
+<h3>5 · Selección de linfocitos B de memoria de alta afinidad</h3>
+<p>El complemento participa en la <strong>selección y activación de linfocitos B de memoria</strong> con alta afinidad por su antígeno en los centros germinales (presentación del antígeno unido a C3d/C3dg por las células dendríticas foliculares). Los mecanismos no se conocen por completo, pero son clave en la <strong>memoria inmunológica</strong>.</p>
+
+<!-- ============================================================= -->
+<span id="regulacion" class="anchor"></span>
+<h2>Regulación del complemento</h2>
+<p>Como la activación puede ser muy potente y dañina, el sistema está sometido a una <strong>regulación estricta</strong> mediante <strong>proteínas reguladoras</strong> que lo limitan en el tiempo y lo restringen a las superficies del patógeno, <strong>protegiendo las células propias</strong>.</p>
+
+<div class="box key"><span class="tag">Las que más caen en examen</span>
+  <p>· <strong>C1-INH</strong> → inhibe el inicio de la vía clásica/lectinas.<br>
+  · <strong>CD55 (DAF)</strong> → disocia (acelera la caída de) las <strong>C3 convertasas</strong>.<br>
+  · <strong>CD59</strong> → impide la formación del <strong>MAC</strong> (bloquea el C9).<br>
+  · <strong>Factor I</strong> (+ cofactores) y <strong>Factor H</strong> → degradan/inactivan el C3b.</p>
+</div>
+
+<h3>Mecanismos de regulación paso a paso</h3>
+<h4>1 · Inhibición del complejo C1 (C1-INH)</h4>
+<ul>
+  <li><strong>C1-INH</strong> (inhibidor de la C1 esterasa) es el inhibidor más potente del inicio de la vía clásica. Pertenece a la familia de las <strong>serpinas</strong> (inhibidores de serín-proteasas).</li>
+  <li>Actúa como sustrato “señuelo” de <span class="mol">C1r</span>/<span class="mol">C1s</span> (vía clásica) y de las <strong>MASP</strong> (vía de las lectinas), <strong>desplazándolas de su unión a C1q y a MBL</strong> e inhibiendo la activación.</li>
+</ul>
+
+<h4>2 · Regulación de las C3 y C5 convertasas</h4>
+<ul>
+  <li><strong>DAF (CD55), CR1, MCP (CD46), C4BP y factor H</strong> se unen a <span class="mol">C3b</span>/<span class="mol">C4b</span> y <strong>desplazan</strong> a los fragmentos activadores (C2b, Bb), <strong>inhibiendo la formación de la C3 convertasa</strong>.</li>
+  <li>El <strong>factor I</strong> proteoliza el <span class="mol">C3b</span> generando fragmentos inactivos (<span class="mol">iC3b</span>, <span class="mol">C3d</span>, <span class="mol">C3dg</span>) que, aunque inactivos para la cascada, son <strong>reconocidos por fagocitos y linfocitos B</strong>.</li>
+  <li><strong>MCP, CR1, C4BP y factor H</strong> actúan como <strong>cofactores</strong> del factor I.</li>
+</ul>
+
+<h4>3 · Selectividad del factor H (propio vs. patógeno)</h4>
+<ul>
+  <li>El <strong>factor H</strong> se une preferentemente a las células del huésped porque reconoce el <strong>ácido siálico</strong>, abundante en las células propias y escaso en los microorganismos. Así, el factor H <strong>inactiva la C3 convertasa sobre las células propias</strong>, protegiéndolas.</li>
+  <li>La <strong>properdina</strong>, en cambio, <strong>estabiliza</strong> la C3 convertasa de la vía alternativa sobre superficies <strong>bacterianas</strong>, favoreciendo la eliminación del patógeno. <em>(Factor H y properdina tienen efectos opuestos y complementarios.)</em></li>
+</ul>
+
+<h4>4 · Inhibición del MAC</h4>
+<ul>
+  <li><strong>CD59</strong> inhibe la inserción de <span class="mol">C9</span> en la membrana, bloqueando la formación del poro MAC en las células propias.</li>
+  <li>La <strong>proteína S (vitronectina)</strong> y la <strong>clusterina</strong> inhiben el ensamblaje de los componentes terminales (bloquean el complejo C5b-7 soluble).</li>
+</ul>
+
+<h3>Tabla de proteínas reguladoras</h3>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Nombre</th><th>Distribución</th><th>Interacciona con</th><th>Función</th></tr></thead>
+  <tbody>
+    <tr><td><strong>C1-INH</strong></td><td>Plasmática</td><td>C1r, C1s</td><td>Se une a C1r/C1s y los disocia de su unión a C1q</td></tr>
+    <tr><td><strong>C4BP</strong> (C4-binding protein)</td><td>Plasmática</td><td>C4b</td><td>Desplaza a C2; cofactor del factor I para la proteólisis de C4b</td></tr>
+    <tr><td><strong>CR1</strong></td><td>Fagocitos, linfocitos T y B, eritrocitos</td><td>C4b, C3b</td><td>Desplaza a C2/Bb; cofactor del factor I</td></tr>
+    <tr><td><strong>Factor H</strong></td><td>Plasmática</td><td>C3b</td><td>Desplaza a Bb; cofactor del factor I para la proteólisis de C3b</td></tr>
+    <tr><td><strong>DAF (CD55)</strong></td><td>Células hematopoyéticas, endoteliales y epiteliales</td><td>C4b2b, C3bBb</td><td>Disocia las C3 convertasas</td></tr>
+    <tr><td><strong>MCP (CD46)</strong></td><td>Leucocitos, células endoteliales y epiteliales</td><td>C4b, C3b</td><td>Cofactor del factor I para la proteólisis de C4b y C3b</td></tr>
+    <tr><td><strong>Factor I</strong></td><td>Plasmática</td><td>C4b, C3b</td><td>Serín-proteasa que corta C3b y C4b usando MCP, C4BP, CR1 y factor H como cofactores</td></tr>
+    <tr><td><strong>CD59</strong></td><td>Células hematopoyéticas, endoteliales y epiteliales</td><td>C7, C8</td><td>Bloquea la unión de C9 y previene la formación del MAC</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box tip"><span class="tag">Código de colores clásico</span><p>En los esquemas de regulación suele distinguirse entre <strong>reguladores de membrana</strong> (CR1, MCP/CD46, DAF/CD55, CD59) y <strong>reguladores solubles / de fase fluida</strong> (C1-INH, C4BP, factor H, factor I, properdina, carboxipeptidasas, vitronectina, clusterina).</p></div>
+
+<!-- ============================================================= -->
+<span id="resumen" class="anchor"></span>
+<h2>Resumen integrador</h2>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th></th><th>Vía clásica</th><th>Vía de las lectinas</th><th>Vía alternativa</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Inmunidad</strong></td><td>Adaptativa</td><td>Innata</td><td>Innata</td></tr>
+    <tr><td><strong>Activador</strong></td><td>Complejos Ag-Ac (IgM, IgG1, IgG3)</td><td>Manosa / PAMPs</td><td>C3b sobre superficie del patógeno</td></tr>
+    <tr><td><strong>Iniciador</strong></td><td>C1q</td><td>MBL + MASP</td><td>C3b (hidrólisis espontánea de C3)</td></tr>
+    <tr><td><strong>C3 convertasa</strong></td><td>C4b2b</td><td>C4b2b</td><td>C3bBb</td></tr>
+    <tr><td><strong>C5 convertasa</strong></td><td>C4b2b3b</td><td>C4b2b3b</td><td>C3bBbC3b</td></tr>
+    <tr><td><strong>Final común</strong></td><td colspan="3" style="text-align:center">Corte de C5 → <strong>MAC (C5b-C9)</strong> → lisis</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box key"><span class="tag">Las tres ideas que no se te pueden olvidar</span>
+  <p><strong>1.</strong> Las <strong>citoquinas coordinan</strong> (mensajeras, con pleiotropía, redundancia, sinergismo y antagonismo); el <strong>complemento ejecuta</strong>.<br>
+  <strong>2.</strong> Las tres vías difieren solo en el <strong>disparo</strong> y <strong>convergen en C3</strong>; a partir de ahí, efectores comunes: <strong>inflamación (anafilotoxinas a), opsonización (fragmentos b) y lisis (MAC)</strong>.<br>
+  <strong>3.</strong> La <strong>regulación</strong> distingue <strong>propio de ajeno</strong> (ácido siálico → factor H; properdina → superficies microbianas) y protege nuestras células (CD55 sobre convertasas, CD59 sobre el MAC).</p>
+</div>
+
+<p class="src" style="margin-top:34px">Documento de estudio elaborado combinando los apuntes del Tema 6 (Bloque II — Mediadores solubles de la respuesta innata) con la presentación de clase «Mediadores solubles de la respuesta inmune / Componentes solubles de la RI». Se han integrado en su lugar lógico los contenidos presentes en la presentación y ausentes en los apuntes (citoquinas; colectinas, ficolinas y pentraxinas; síntesis detallada del complemento; mecanismo del grupo tioéster; papel de CR2/TLR en el linfocito B) y se ha conservado la mayor profundidad de los apuntes en la sección de regulación.</p>
+
+<div class="footer">
+  Inmunología · 4.º Grado en Biología · Universidad Autónoma de Madrid<br>
+  Tema 6 — Mediadores solubles de la respuesta inmune
+</div>
+
+</div>
+</body>
+</html>
