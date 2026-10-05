@@ -7,9 +7,9 @@
 <meta name="description" content="Apuntes de Inmunología — Tema 6: Mediadores solubles de la respuesta inmune (citoquinas y sistema del complemento). Combina los apuntes con la presentación de clase.">
 <style>
 :root{
-  --bg:#f6f5f1;
+  --bg:#ffffff;
   --surface:#ffffff;
-  --surface-2:#faf9f6;
+  --surface-2:#f7f6f2;
   --ink:#1f2328;
   --ink-soft:#4a5159;
   --muted:#7a828b;
@@ -27,30 +27,7 @@
   --tip:#7a4bb5;    --tip-bg:#f3edfb;   --tip-br:#ddccf2;
   --warn:#b23b3b;   --warn-bg:#fcecec;  --warn-br:#f2c9c9;
 }
-:root:not([data-theme="light"]){
-  @media (prefers-color-scheme: dark){
-    --bg:#15171a; --surface:#1d2024; --surface-2:#22262b;
-    --ink:#e8eaed; --ink-soft:#c2c7cd; --muted:#8c949d;
-    --line:#2d3237; --line-strong:#3a4147;
-    --accent:#4fc9c0; --accent-soft:#113b39; --accent-ink:#bdeeea;
-    --def:#7fb2e8; --def-bg:#13263b; --def-br:#244a6e;
-    --key:#e5bd63; --key-bg:#3a2f14; --key-br:#5e4c21;
-    --ej:#7fd69c; --ej-bg:#16331f; --ej-br:#2b5a39;
-    --tip:#c3a6ec; --tip-bg:#2a1f3d; --tip-br:#453363;
-    --warn:#ef9a9a; --warn-bg:#3a1e1e; --warn-br:#5e3030;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#15171a; --surface:#1d2024; --surface-2:#22262b;
-  --ink:#e8eaed; --ink-soft:#c2c7cd; --muted:#8c949d;
-  --line:#2d3237; --line-strong:#3a4147;
-  --accent:#4fc9c0; --accent-soft:#113b39; --accent-ink:#bdeeea;
-  --def:#7fb2e8; --def-bg:#13263b; --def-br:#244a6e;
-  --key:#e5bd63; --key-bg:#3a2f14; --key-br:#5e4c21;
-  --ej:#7fd69c; --ej-bg:#16331f; --ej-br:#2b5a39;
-  --tip:#c3a6ec; --tip-bg:#2a1f3d; --tip-br:#453363;
-  --warn:#ef9a9a; --warn-bg:#3a1e1e; --warn-br:#5e3030;
-}
+/* Documento optimizado para impresión / PDF en fondo blanco. */
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -186,6 +163,34 @@ figcaption{
 }
 .anchor{display:block; position:relative; top:-10px; visibility:hidden;}
 .src{font-size:.72rem; color:var(--muted); font-style:italic; font-family:"SF Pro Text",sans-serif;}
+
+/* ---------- Impresión / PDF ---------- */
+@page{ size:A4; margin:14mm 14mm; }
+@media print{
+  html,body{background:#fff !important;}
+  body{font-size:10.6pt; line-height:1.5;}
+  .cover{padding:4px 0 8px;}
+  .cover h1{font-size:1.8rem;}
+  .cover .sub{margin-bottom:14px;}
+  .wrap{padding:0;}
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0;}
+  li{margin:4px 0;}
+  h2.part{margin:20px 0 4px;}
+  h2{margin:16px 0 4px; break-after:avoid;}
+  h3{margin:16px 0 2px; break-after:avoid;}
+  h4{margin:12px 0 2px; break-after:avoid;}
+  .box{margin:12px 0; padding:11px 15px;}
+  figure{margin:14px 0; break-inside:avoid;}
+  figure svg{padding:8px;}
+  /* las tablas largas pueden dividirse entre páginas; las filas no */
+  .tablewrap{margin:12px 0;}
+  tr,li,.box{break-inside:avoid;}
+  thead{display:table-header-group;}
+  .toc{break-inside:avoid; padding:14px 18px; margin:16px 0 6px;}
+  a{color:var(--ink) !important; text-decoration:none;}
+  .footer{margin-top:24px;}
+}
 </style>
 </head>
 <body>
@@ -296,8 +301,6 @@ figcaption{
   <p>· Sobre el cambio de isotipo a <strong>IgE</strong> en el linfocito B: la <strong>IL-4 induce</strong> el cambio, mientras que el <strong>IFN-γ lo bloquea</strong>.<br>
   · Sobre el macrófago (MΦ): el <strong>IFN-γ activa</strong> / la <strong>IL-4 inhibe</strong>.</p>
 </div>
-
-<div class="box tip"><span class="tag">Truco para recordarlas</span><p><strong>“Pleiotropía y Redundancia”</strong> describen la relación <em>citoquina ↔ efecto</em> (una→muchos / muchas→uno); <strong>“Sinergismo y Antagonismo”</strong> describen cómo se relacionan <em>dos citoquinas entre sí</em> (suman / se oponen).</p></div>
 
 <!-- ============================================================= -->
 <span id="clasif-cito" class="anchor"></span>
@@ -643,8 +646,6 @@ figcaption{
   <li><strong>Formación del MAC</strong>, igual que en la vía clásica.</li>
 </ol>
 
-<div class="box tip"><span class="tag">Conecta las vías</span><p>La vía de las lectinas y la clásica <strong>comparten la misma convertasa</strong> (<span class="mol">C4b2b</span>); solo cambia el <strong>disparador inicial</strong> (PAMPs vs. Ag-Ac). La vía alternativa usa otra convertasa (<span class="mol">C3bBb</span>) pero <strong>todas confluyen en C3</strong>.</p></div>
-
 <!-- ============================================================= -->
 <span id="otros" class="anchor"></span>
 <h2>Otros componentes solubles (reconocimiento)</h2>
@@ -720,13 +721,6 @@ figcaption{
 <h2>Regulación del complemento</h2>
 <p>Como la activación puede ser muy potente y dañina, el sistema está sometido a una <strong>regulación estricta</strong> mediante <strong>proteínas reguladoras</strong> que lo limitan en el tiempo y lo restringen a las superficies del patógeno, <strong>protegiendo las células propias</strong>.</p>
 
-<div class="box key"><span class="tag">Las que más caen en examen</span>
-  <p>· <strong>C1-INH</strong> → inhibe el inicio de la vía clásica/lectinas.<br>
-  · <strong>CD55 (DAF)</strong> → disocia (acelera la caída de) las <strong>C3 convertasas</strong>.<br>
-  · <strong>CD59</strong> → impide la formación del <strong>MAC</strong> (bloquea el C9).<br>
-  · <strong>Factor I</strong> (+ cofactores) y <strong>Factor H</strong> → degradan/inactivan el C3b.</p>
-</div>
-
 <h3>Mecanismos de regulación paso a paso</h3>
 <h4>1 · Inhibición del complejo C1 (C1-INH)</h4>
 <ul>
@@ -788,12 +782,6 @@ figcaption{
     <tr><td><strong>Final común</strong></td><td colspan="3" style="text-align:center">Corte de C5 → <strong>MAC (C5b-C9)</strong> → lisis</td></tr>
   </tbody>
 </table>
-</div>
-
-<div class="box key"><span class="tag">Las tres ideas que no se te pueden olvidar</span>
-  <p><strong>1.</strong> Las <strong>citoquinas coordinan</strong> (mensajeras, con pleiotropía, redundancia, sinergismo y antagonismo); el <strong>complemento ejecuta</strong>.<br>
-  <strong>2.</strong> Las tres vías difieren solo en el <strong>disparo</strong> y <strong>convergen en C3</strong>; a partir de ahí, efectores comunes: <strong>inflamación (anafilotoxinas a), opsonización (fragmentos b) y lisis (MAC)</strong>.<br>
-  <strong>3.</strong> La <strong>regulación</strong> distingue <strong>propio de ajeno</strong> (ácido siálico → factor H; properdina → superficies microbianas) y protege nuestras células (CD55 sobre convertasas, CD59 sobre el MAC).</p>
 </div>
 
 <p class="src" style="margin-top:34px">Documento de estudio elaborado combinando los apuntes del Tema 6 (Bloque II — Mediadores solubles de la respuesta innata) con la presentación de clase «Mediadores solubles de la respuesta inmune / Componentes solubles de la RI». Se han integrado en su lugar lógico los contenidos presentes en la presentación y ausentes en los apuntes (citoquinas; colectinas, ficolinas y pentraxinas; síntesis detallada del complemento; mecanismo del grupo tioéster; papel de CR2/TLR en el linfocito B) y se ha conservado la mayor profundidad de los apuntes en la sección de regulación.</p>
