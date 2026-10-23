@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1456 628" width="1456" height="628" font-family="Lato, Arial, sans-serif">
+<defs><clipPath id="cl0"><rect x="92" y="142" width="640" height="196" rx="11" ry="11"/></clipPath><clipPath id="cl1"><rect x="766" y="142" width="640" height="196" rx="11" ry="11"/></clipPath><clipPath id="cl2"><rect x="92" y="372" width="640" height="196" rx="11" ry="11"/></clipPath><clipPath id="cl3"><rect x="766" y="372" width="640" height="196" rx="11" ry="11"/></clipPath></defs>
+<rect x="0" y="0" width="1456" height="628" fill="#ffffff"/>
+<g clip-path="url(#cl0)">
+<rect x="92" y="142" width="640" height="196" fill="#eef4ea"/>
+<rect x="92" y="142" width="640" height="46" fill="#3f6b38"/>
+</g>
+<rect x="92" y="142" width="640" height="196" rx="11" ry="11" fill="none" stroke="#3f6b38" stroke-width="1.6"/>
+<text x="114" y="171" font-family="Lato, Arial, sans-serif" font-size="17" font-weight="900" letter-spacing="1" fill="#ffffff">FORTALEZAS</text>
+<text x="710" y="171" text-anchor="end" font-family="Lato, Arial, sans-serif" font-size="11.5" font-style="italic" fill="#ffffff" opacity="0.92">internas · favorables</text>
+<circle cx="117" cy="196.0" r="3" fill="#3f6b38"/>
+<text x="128" y="200.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#26491f">Proyecto integral en tres frentes: diagnóstico genético, control del visón y</text>
+<text x="128" y="217.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#26491f">restauración del hábitat</text>
+<circle cx="117" cy="241.0" r="3" fill="#3f6b38"/>
+<text x="128" y="245.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#26491f">Técnicas modernas y no invasivas (ADN ambiental y genética de excrementos)</text>
+<circle cx="117" cy="269.0" r="3" fill="#3f6b38"/>
+<text x="128" y="273.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#26491f">Ámbito completo y abarcable: los 25 km del río Francia, de principio a fin</text>
+<circle cx="117" cy="297.0" r="3" fill="#3f6b38"/>
+<text x="128" y="301.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#26491f">Especie paraguas: su conservación protege también al desmán, la nutria y el turón</text>
+<g clip-path="url(#cl1)">
+<rect x="766" y="142" width="640" height="196" fill="#e4f2f4"/>
+<rect x="766" y="142" width="640" height="46" fill="#2b8793"/>
+</g>
+<rect x="766" y="142" width="640" height="196" rx="11" ry="11" fill="none" stroke="#2b8793" stroke-width="1.6"/>
+<text x="788" y="171" font-family="Lato, Arial, sans-serif" font-size="17" font-weight="900" letter-spacing="1" fill="#ffffff">OPORTUNIDADES</text>
+<text x="1384" y="171" text-anchor="end" font-family="Lato, Arial, sans-serif" font-size="11.5" font-style="italic" fill="#ffffff" opacity="0.92">externas · favorables</text>
+<circle cx="791" cy="196.0" r="3" fill="#2b8793"/>
+<text x="802" y="200.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#154e57">Financiación disponible (fondos LIFE y de biodiversidad); especie catalogada</text>
+<text x="802" y="217.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#154e57">«vulnerable»</text>
+<circle cx="791" cy="241.0" r="3" fill="#2b8793"/>
+<text x="802" y="245.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#154e57">Auge de la restauración fluvial y la retirada de azudes (Directiva Marco del Agua)</text>
+<circle cx="791" cy="269.0" r="3" fill="#2b8793"/>
+<text x="802" y="273.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#154e57">Colaboración posible con administración, universidad y colectivos locales</text>
+<circle cx="791" cy="297.0" r="3" fill="#2b8793"/>
+<text x="802" y="301.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#154e57">Valor como especie bandera para divulgación y educación ambiental</text>
+<g clip-path="url(#cl2)">
+<rect x="92" y="372" width="640" height="196" fill="#f8f1db"/>
+<rect x="92" y="372" width="640" height="46" fill="#b0892b"/>
+</g>
+<rect x="92" y="372" width="640" height="196" rx="11" ry="11" fill="none" stroke="#b0892b" stroke-width="1.6"/>
+<text x="114" y="401" font-family="Lato, Arial, sans-serif" font-size="17" font-weight="900" letter-spacing="1" fill="#ffffff">DEBILIDADES</text>
+<text x="710" y="401" text-anchor="end" font-family="Lato, Arial, sans-serif" font-size="11.5" font-style="italic" fill="#ffffff" opacity="0.92">internas · desfavorables</text>
+<circle cx="117" cy="426.0" r="3" fill="#b0892b"/>
+<text x="128" y="430.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#6c5112">Elevado coste y fuerte dependencia de financiación externa</text>
+<circle cx="117" cy="454.0" r="3" fill="#b0892b"/>
+<text x="128" y="458.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#6c5112">Necesita personal especializado y un seguimiento continuo</text>
+<circle cx="117" cy="482.0" r="3" fill="#b0892b"/>
+<text x="128" y="486.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#6c5112">Se parte de pocos datos sobre la población actual de la especie</text>
+<circle cx="117" cy="510.0" r="3" fill="#b0892b"/>
+<text x="128" y="514.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#6c5112">Plazo de 2 años quizá corto para demostrar resultados poblacionales</text>
+<g clip-path="url(#cl3)">
+<rect x="766" y="372" width="640" height="196" fill="#f8eae1"/>
+<rect x="766" y="372" width="640" height="46" fill="#b2673a"/>
+</g>
+<rect x="766" y="372" width="640" height="196" rx="11" ry="11" fill="none" stroke="#b2673a" stroke-width="1.6"/>
+<text x="788" y="401" font-family="Lato, Arial, sans-serif" font-size="17" font-weight="900" letter-spacing="1" fill="#ffffff">AMENAZAS</text>
+<text x="1384" y="401" text-anchor="end" font-family="Lato, Arial, sans-serif" font-size="11.5" font-style="italic" fill="#ffffff" opacity="0.92">externas · desfavorables</text>
+<circle cx="791" cy="426.0" r="3" fill="#b2673a"/>
+<text x="802" y="430.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#79441f">Reinvasión continua del visón americano desde el río Alagón</text>
+<circle cx="791" cy="454.0" r="3" fill="#b2673a"/>
+<text x="802" y="458.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#79441f">Cambio climático: sequías y estiajes que reducen el hábitat</text>
+<circle cx="791" cy="482.0" r="3" fill="#b2673a"/>
+<text x="802" y="486.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#79441f">Presión humana sobre las riberas (ganadería, usos del suelo, azudes)</text>
+<circle cx="791" cy="510.0" r="3" fill="#b2673a"/>
+<text x="802" y="514.0" font-family="Lato, Arial, sans-serif" font-size="13" fill="#79441f">Poblaciones ya muy reducidas y aisladas, con riesgo inmediato de extinción</text>
+<text x="92" y="34" font-family="Lato, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="1.5" fill="#132a28">MATRIZ FODA</text>
+<text x="92" y="58" font-family="Lato, Arial, sans-serif" font-size="13.5" fill="#5d6b68">Proyecto RIPARIA-GEN · Conservación de la rata de agua (Arvicola sapidus) en el río Francia</text>
+<text x="412.0" y="128" text-anchor="middle" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="800" letter-spacing="2" fill="#6b7673">FACTORES INTERNOS  ·  DEL PROYECTO</text>
+<text x="1086.0" y="128" text-anchor="middle" font-family="Lato, Arial, sans-serif" font-size="12.5" font-weight="800" letter-spacing="2" fill="#6b7673">FACTORES EXTERNOS  ·  DEL ENTORNO</text>
+<text x="34" y="240.0" transform="rotate(-90 34 240.0)" text-anchor="middle" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="800" letter-spacing="2.5" fill="#3f6b38">FAVORABLES  (+)</text>
+<text x="34" y="470.0" transform="rotate(-90 34 470.0)" text-anchor="middle" font-family="Lato, Arial, sans-serif" font-size="12" font-weight="800" letter-spacing="2.5" fill="#b2673a">DESFAVORABLES  (−)</text>
+<text x="1406" y="606" text-anchor="end" font-family="Lato, Arial, sans-serif" font-size="11.5" fill="#8b9693">Redacción y Ejecución de Proyectos (REP) · Grado en Biología · UAM</text>
+</svg>
